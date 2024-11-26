@@ -1,0 +1,29 @@
+{
+  "name": "libmas",
+  "version": "1.0.0",
+  "description": "BYU-I CSE341 - Group project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file='.env' --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wilsonBYU/LibMaS.git"
+  },
+  "keywords": [
+    "byu",
+    "cse341"
+  ],
+  "author": "Wilson Romero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilsonBYU/LibMaS/issues"
+  },
+  "homepage": "https://github.com/wilsonBYU/LibMaS#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0"
+  }
+}
