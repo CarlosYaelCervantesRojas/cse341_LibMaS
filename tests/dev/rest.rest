@@ -1,0 +1,29 @@
+### Get all the books in the database
+GET http://localhost:3000/books
+
+
+### Get single book from the database
+GET http://localhost:3000/books/674565e8577e077c5e774755
+
+
+### Insert a new book to the database
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "bar_code": "9780439139601",
+  "title": "Harry Potter and the Goblet of Fire",
+  "author_id": "4",
+  "isbn": "9780439139601",
+  "pub_date": "2000-07-08",
+  "genre": "Fantasy",
+  "coppies_available": 50
+}
+
+### update a book information
+PUT http://localhost:3000/books/674565e8577e077c5e774755
+Content-Type: application/json
+
+{
+  "cover": "https://m.media-amazon.com/images/I/91-LL7OnDCL._AC_UF1000,1000_QL80_.jpg"
+}
