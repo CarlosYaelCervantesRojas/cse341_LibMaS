@@ -10,15 +10,17 @@ GET http://localhost:3000/books/674565e8577e077c5e774755
 POST http://localhost:3000/books
 Content-Type: application/json
 
+
 {
-  "bar_code": "9780439139601",
-  "title": "Harry Potter and the Goblet of Fire",
-  "author_id": "4",
-  "isbn": "9780439139601",
-  "pub_date": "2000-07-08",
-  "genre": "Fantasy",
-  "coppies_available": 50
+  "title":"The Goldfinch",
+  "authorId":"1",
+  "isbn":"9780316055437",
+  "edition":"Paperback",
+  "pubDate":"2013-10-22",
+  "genre":"Fiction",
+  "cover":"https://m.media-amazon.com/images/I/71ud9Tcj5YL.jpg"
 }
+
 
 ### update a book information
 PUT http://localhost:3000/books/674565e8577e077c5e774755
