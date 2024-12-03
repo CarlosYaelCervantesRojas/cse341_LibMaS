@@ -4,6 +4,7 @@ const cors = require("cors")
 const router = require("./src/routes/index")
 
 app
+  .set('trust proxy', true)
   .use(express.json())
   .use(cors())
   .use("/", router)
