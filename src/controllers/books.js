@@ -30,12 +30,22 @@ booksController.post = async (req, res) => {
     res.status(200).json(result)
   } catch(e) {
     console.error(e)
+    res.status(500).json({error: "internal server error"})
   }
 }
 
 booksController.put = async (req, res) => {
   try {
     const result = await db.put(BOOKS, {_id: new ObjectId(req.params.book_id)}, {$set: req.body})
+    res.status(204).json(result)
+  } catch(e) {
+    console.error(e)
+  }
+}
+
+booksController.delete = async (req, res) =>{
+  try {
+    const result = await db.delete(BOOKS, {_id: new ObjectId(req.params.book_id)})
     res.status(204).json(result)
   } catch(e) {
     console.error(e)
