@@ -12,6 +12,7 @@ booksController.getAll = async (req, res) => {
     res.status(200).json(books)
   } catch (e) {
     console.error(e)
+    res.status(500).json({error: "internal server error"})
   }
 }
 
@@ -21,6 +22,7 @@ booksController.get = async (req, res) => {
     res.status(200).json(book)
   } catch(e) {
     console.error(e)
+    res.status(500).json({error: "internal server error"})
   }
 }
 
@@ -40,6 +42,7 @@ booksController.put = async (req, res) => {
     res.status(204).json(result)
   } catch(e) {
     console.error(e)
+    res.status(500).json({error: "internal server error"})
   }
 }
 
@@ -49,6 +52,7 @@ booksController.delete = async (req, res) =>{
     res.status(204).json(result)
   } catch(e) {
     console.error(e)
+    res.status(500).json({error: "internal server error"})
   }
 }
 
