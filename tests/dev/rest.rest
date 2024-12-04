@@ -3,7 +3,7 @@ GET http://localhost:3000/books
 
 
 ### Get single book from the database
-GET http://localhost:3000/books/674565e8577e077c5e774755
+GET http://localhost:3000/books/674e9027d8a0e1389c0390e5
 
 
 ### Insert a new book to the database
@@ -12,20 +12,24 @@ Content-Type: application/json
 
 
 {
-  "title":"The Goldfinch",
-  "authorId":"1",
-  "isbn":"9780316055437",
-  "edition":"Paperback",
-  "pubDate":"2013-10-22",
-  "genre":"Fiction",
-  "cover":"https://m.media-amazon.com/images/I/71ud9Tcj5YL.jpg"
+  "title": "Harry Potter and the Goblet of Fire",
+  "authorId": "4",
+  "isbn": "9780439139601",
+  "edition": "Paperback",
+  "pubDate": "2000-07-08",
+  "genre": "Fantasy",
+  "cover": "https://m.media-amazon.com/images/I/91-LL7OnDCL._AC_UF1000,1000_QL80_.jpg"
 }
 
 
 ### update a book information
-PUT http://localhost:3000/books/674565e8577e077c5e774755
+PUT http://localhost:3000/books/674e9027d8a0e1389c0390e5
 Content-Type: application/json
 
 {
-  "cover": "https://m.media-amazon.com/images/I/91-LL7OnDCL._AC_UF1000,1000_QL80_.jpg"
+  "edition": "Paperback"
 }
+
+
+### Delete book item
+DELETE http://localhost:3000/books/674e9eb19a22fb638db4a73c
