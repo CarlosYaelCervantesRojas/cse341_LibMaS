@@ -1,8 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const router = require("./src/routes/index");
+const express = require("express")
+const app = express()
+const cors = require("cors")
+const router = require("./src/routes/index")
+
+app
+  .set('trust proxy', true)
+  .use(express.json())
+  .use(cors())
+  .use("/", router)
 
 app.use(express.json()).use(cors()).use("/", router);
 
