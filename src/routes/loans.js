@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const authorsController = require("../controllers/loans");
+const loansController = require("../controllers/loans");
 
 router
   .get("/", loansController.getAll)

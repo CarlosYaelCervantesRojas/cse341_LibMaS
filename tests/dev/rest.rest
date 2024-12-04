@@ -3,7 +3,7 @@ GET http://localhost:3000/books
 
 
 ### Get single book from the database
-GET http://localhost:3000/books/674e9027d8a0e1389c0390e5
+GET http://localhost:3000/books/6750be446deba23db5ba3033
 
 
 ### Insert a new book to the database
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
   "title": "Harry Potter and the Goblet of Fire",
-  "authorId": "4",
+  "authorId": "674f493d7983c6ffd7fc764f",
   "isbn": "9780439139601",
   "edition": "Paperback",
   "pubDate": "2000-07-08",
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 
 ### update a book information
-PUT http://localhost:3000/books/674e9027d8a0e1389c0390e5
+PUT http://localhost:3000/books/6750be446deba23db5ba3033
 Content-Type: application/json
 
 {
@@ -32,4 +32,4 @@ Content-Type: application/json
 
 
 ### Delete book item
-DELETE http://localhost:3000/books/674e9eb19a22fb638db4a73c
+DELETE http://localhost:3000/books/6750be446deba23db5ba3033
