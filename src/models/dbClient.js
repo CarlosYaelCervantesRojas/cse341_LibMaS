@@ -78,6 +78,7 @@ class Db {
       await this.client.close();
     }
   }
+
 }
 
 module.exports = Db;

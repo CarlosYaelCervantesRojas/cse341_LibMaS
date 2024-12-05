@@ -3,13 +3,15 @@ const Database = require("../models/dbClient")
 const db = new Database()
 
 const BOOKS = "books"
+const BOOK_ITEMS = "bookItems"
+const AUTHORS = "authors"
 
 const booksController = {}
 
 booksController.getAll = async (req, res) => {
   /*
     #swagger.tags = ['Books']
-    #swagger.description = 'Returns all books from the database'
+    #swagger.description = 'Return all books from the database'
     #swagger.responses[200] = { description: 'Books retrieved successfully' }
     #swagger.responses[500] = { description: 'Internal server error (databse or node)' }
   */
@@ -31,10 +33,54 @@ booksController.get = async (req, res) => {
   */
   try {
     const book = await db.get(BOOKS, {_id: new ObjectId(req.params.book_id)})
+    const items = await db.get(BOOK_ITEMS, { bookId: book[0]._id.toString()})
+    book[0].stock = items.length
     res.status(200).json(book)
   } catch(e) {
     console.error(e)
     res.status(500).json({error: "internal server error"})
+  }
+}
+
+booksController.getItems = async (req, res) => {
+  /*
+    #swagger.tags = ['Books']
+    #swagger.description = 'Returns the book informatoin and all the copies available'
+    #swagger.responses[200] = { description: 'Data with the given id retrieved successfully' }
+    #swagger.responses[500] = { description: 'Internal server error (databse or node)' }
+  */
+  try {
+    const book = await db.get(BOOKS, { _id: new ObjectId(req.params.book_id)})
+    const items = await db.get(BOOK_ITEMS, { bookId: book[0]._id.toString()})
+    const cleanedItems = items.filter( item => {
+      delete item.bookId
+      return item.discarded == false
+    })
+    book[0].stock = cleanedItems.length
+    book[0].items = cleanedItems 
+    res.status(200).json(book)
+  } catch(e) {
+    console.error(e)
+    res.status(500).json({error: "internal server error"})
+  }
+}
+
+booksController.getDetails = async (req, res) => {
+  /*
+    #swagger.tags = ['Books']
+    #swagger.description = 'Returns the book including the author information'
+    #swagger.responses[200] = { description: 'Book information retrieved successfully' }
+    #swagger.responses[500] = { description: 'Internal server error (databse or node)' }
+  */
+  try {
+    const book = await db.get(BOOKS, { _id: new ObjectId(req.params.book_id)})
+    const author = await db.get(AUTHORS, { _id: new ObjectId(book[0].authorId)})
+    delete book[0].authorId
+    book[0].author = author[0]
+    res.status(200).json(book)
+  } catch (e) {
+    console.error(e)
+    res.status(500).json(e)
   }
 }
 
@@ -94,7 +140,7 @@ booksController.put = async (req, res) => {
 booksController.delete = async (req, res) =>{
   /*
     #swagger.tags = ['Books']
-    #swagger.description = 'Delete a single book with the given ID'
+    #swagger.description = 'Deletes a single book with the given ID'
     #swagger.responses[200] = { description: 'Book with the given id deleted successfully' }
     #swagger.responses[500] = { description: 'Internal server error (databse or node)' }
   */

@@ -1,0 +1,40 @@
+### Get all the books in the database
+GET http://localhost:3000/bookItems
+
+
+### Get single book from the database
+GET http://localhost:3000/bookItems/674fff7a9877b9bd715ea1fb
+
+
+### Get details from a single book from the database
+GET http://localhost:3000/bookItems/67510c1c303bc679a6929b5d/details
+
+
+### Insert a new book to the database
+POST http://localhost:3000/bookItems
+Content-Type: application/json
+
+
+{
+  "barCode": "9780439139601-010",
+  "bookId": "674e9051d8a0e1389c0390e7",
+  "available": true,
+  "discarded": false,
+  "discardedDate": null,
+  "discardedReason": null
+}
+
+
+### update a book information
+PUT http://localhost:3000/bookItems/674ffeaf9e024845fe6e73a7
+Content-Type: application/json
+
+
+{
+  "discarded": false,
+  "available": true
+}
+
+
+### Delete book item
+DELETE http://localhost:3000/bookItems/674fff969877b9bd715ea201
