@@ -66,7 +66,9 @@ authorsController.put = async (req, res) => {
     );
 
     if (author.matchedCount === 0) {
-      return res.status(404).json({ message: "Author not found" });
+      //return res.status(404).json({ message: "Author not found" });
+      throw({code: 404, message: "An error occurred while updating the author"})
+      throw new Error("this is an error")
     }
 
     if (author.modifiedCount === 0) {
@@ -75,10 +77,11 @@ authorsController.put = async (req, res) => {
 
     res.status(200).json({ message: "Author updated" });
   } catch (e) {
-    console.error(e.message);
-    res
-      .status(500)
-      .json({ message: "An error occurred while updating the author" });
+    throw({code: 500, message: "An error occurred while updating the author"})
+    //console.error(e.message);
+    //res
+    //  .status(500)
+    //  .json({ message: "An error occurred while updating the author" });
   }
 };
 
