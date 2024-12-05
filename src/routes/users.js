@@ -1,18 +1,18 @@
 const router = require("express").Router();
 
 const usersController = require("../controllers/users");
-const { isValidId } = require("../utils/middleware")
+const { isValidId, putDisplayName } = require("../utils/middleware")
 
 
 router
     .get("/", usersController.getAll)
-    // .post("/", usersController.post)
     .get("/:id",
         isValidId,
         usersController.get
     )
     .put("/:id",
         isValidId,
+        putDisplayName,
         usersController.put
     )
     .delete("/:id",

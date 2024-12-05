@@ -1,0 +1,19 @@
+### Get all the users in the database
+GET http://localhost:3000/users
+
+### Get single user from the database
+GET http://localhost:3000/users/675218959409cade164d584b
+
+### Post method is only allowed by Oauth
+
+### update a author information
+PUT http://localhost:3000/users/67523092feaf82502329234c
+Content-Type: application/json
+
+{
+    "firstName": "Carlos",
+    "lastName": "Cervantes Rojas"
+}
+
+### Delete an author from the database
+DELETE http://localhost:3000/users/675218959409cade164d584a
