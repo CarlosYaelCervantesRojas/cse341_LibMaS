@@ -71,14 +71,17 @@ bookItemsController.post = async (req, res) => {
     #swagger.tags = ['Book Items']
     #swagger.description = 'Inserts a new book item to the database'
     #swagger.parameters['body'] = {
-        "barCode": "9780439139601-010",
-        "bookId": "674e9051d8a0e1389c0390e7",
-        "available": true,
-        "discarded": false,
-        "discardedDate": null,
-        "discardedReason": null
+      in: 'body',
+      description: 'Json containing book detail data',
+      schema: {
+          "barCode": "9780439139601-010",
+          "bookId": "674e9051d8a0e1389c0390e7",
+          "available": true,
+          "discarded": false,
+          "discardedDate": null,
+          "discardedReason": null
       }
-    }
+    } 
     #swagger.responses[200] = { description: 'New book item created successfully' }
     #swagger.responses[500] = { description: 'Internal server error (databse or node)' }
   */
