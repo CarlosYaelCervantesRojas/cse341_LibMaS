@@ -29,10 +29,13 @@
         "tags": [
           "Books"
         ],
-        "description": "",
+        "description": "Return all books from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Books retrieved successfully"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
           }
         }
       },
@@ -40,10 +43,56 @@
         "tags": [
           "Books"
         ],
-        "description": "",
+        "description": "Inserts a new book to the database",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Json containing book data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Harry Potter and the Goblet of Fire"
+                },
+                "authorId": {
+                  "type": "string",
+                  "example": "4"
+                },
+                "isbn": {
+                  "type": "string",
+                  "example": "9780439139601"
+                },
+                "edition": {
+                  "type": "string",
+                  "example": "Paperback"
+                },
+                "pubDate": {
+                  "type": "string",
+                  "example": "2000-07-08"
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Fantasy"
+                },
+                "cover": {
+                  "type": "string",
+                  "example": "https://m.media-amazon.com/images/I/91-LL7OnDCL._AC_UF1000,1000_QL80_.jpg"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "New book created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
           }
         }
       }
@@ -53,7 +102,7 @@
         "tags": [
           "Books"
         ],
-        "description": "",
+        "description": "Returns a single book with the given ID",
         "parameters": [
           {
             "name": "book_id",
@@ -64,7 +113,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Book with the given id retrieval successfully"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
           }
         }
       },
@@ -72,7 +124,53 @@
         "tags": [
           "Books"
         ],
-        "description": "",
+        "description": "Updates an existing book",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Json containing book data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "edition": {
+                  "type": "string",
+                  "example": "Paperback"
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Fantasy"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book updated successfully"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Deletes a single book with the given ID",
         "parameters": [
           {
             "name": "book_id",
@@ -82,8 +180,353 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Book with the given id deleted successfully"
+          },
           "204": {
             "description": "No Content"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      }
+    },
+    "/books/{book_id}/items": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the book informatoin and all the copies available",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data with the given id retrieved successfully"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      }
+    },
+    "/books/{book_id}/details": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the book including the author information",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book information retrieved successfully"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      }
+    },
+    "/bookItems/": {
+      "get": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Return all book items from the database",
+        "responses": {
+          "200": {
+            "description": "Book items retrieved successfully"
+          },
+          "404": {
+            "description": "No book items found"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Inserts a new book item to the database",
+        "parameters": [
+          {
+            "name": "body",
+            "barCode": "9780439139601-010",
+            "bookId": "674e9051d8a0e1389c0390e7",
+            "available": true,
+            "discarded": false,
+            "discardedDate": null,
+            "discardedReason": null,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bookItems/{bookItemId}": {
+      "get": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Returns a single book item with the given ID",
+        "parameters": [
+          {
+            "name": "bookItemId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book item with the given id retrieval successfully"
+          },
+          "404": {
+            "description": "No book items found with the given ID"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Updates an existing book item",
+        "parameters": [
+          {
+            "name": "bookItemId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Json containing book data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "available": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book item updated successfully"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Deletes a single book item with the given ID",
+        "parameters": [
+          {
+            "name": "bookItemId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book item with the given id deleted successfully"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      }
+    },
+    "/bookItems/{bookItemId}/details": {
+      "get": {
+        "tags": [
+          "Book Items"
+        ],
+        "description": "Returns a single book and details including book and author information",
+        "parameters": [
+          {
+            "name": "bookItemId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book item with the given id retrieval successfully"
+          },
+          "404": {
+            "description": "No book items found with the given ID"
+          },
+          "500": {
+            "description": "Internal server error (databse or node)"
+          }
+        }
+      }
+    },
+    "/authors/": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "dob": {
+                  "example": "any"
+                },
+                "dod": {
+                  "example": "any"
+                },
+                "country": {
+                  "example": "any"
+                },
+                "language": {
+                  "example": "any"
+                },
+                "wiki": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/authors/{author_id}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "author_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { MongoClient } = require("mongodb");
 
 class Db {
@@ -79,6 +78,7 @@ class Db {
       await this.client.close();
     }
   }
+
 }
 
 module.exports = Db;

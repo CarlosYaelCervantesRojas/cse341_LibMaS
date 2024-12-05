@@ -4,9 +4,10 @@ const db = new Database();
 
 const COLLECTION = "authors";
 const authorsController = {};
-
+ //#swagger.tags = ['Authors']
 // Uses "get" function from dbClient and populates the collection name, leaves qry param empty to retrieve all records
 authorsController.getAll = async (req, res) => {
+  //#swagger.tags = ['Authors']
   try {
     const authors = await db.get(COLLECTION);
     res.status(200).json(authors);
@@ -17,6 +18,7 @@ authorsController.getAll = async (req, res) => {
 
 // Uses "get" function from dbClient and populates the collection name, populating qry param with specific ID
 authorsController.get = async (req, res) => {
+  //#swagger.tags = ['Authors']
   try {
     const author = await db.get(COLLECTION, {
       _id: new ObjectId(req.params.author_id),
@@ -32,6 +34,7 @@ authorsController.get = async (req, res) => {
 };
 
 authorsController.post = async (req, res) => {
+  //#swagger.tags = ['Authors']
   try {
     const { firstName, lastName, dob, dod, country, language, wiki } = req.body;
     const author = {
@@ -52,6 +55,7 @@ authorsController.post = async (req, res) => {
 };
 
 authorsController.put = async (req, res) => {
+  //#swagger.tags = ['Authors']
   try {
     const author = await db.put(
       COLLECTION,
@@ -77,6 +81,7 @@ authorsController.put = async (req, res) => {
 };
 
 authorsController.delete = async (req, res) => {
+  //#swagger.tags = ['Authors']
   try {
     const author = await db.delete(COLLECTION, {
       _id: new ObjectId(req.params.author_id),

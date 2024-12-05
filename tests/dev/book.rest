@@ -3,7 +3,17 @@ GET http://localhost:3000/books
 
 
 ### Get single book from the database
-GET http://localhost:3000/books/674e9027d8a0e1389c0390e5
+GET http://localhost:3000/books/674e9051d8a0e1389c0390e7
+
+
+### Get book items from the database
+GET http://localhost:3000/books/674e9051d8a0e1389c0390e7/items
+
+
+### Get book details from the database
+GET http://localhost:3000/books/674e9051d8a0e1389c0390e7/details
+
+
 
 
 ### Insert a new book to the database
@@ -23,11 +33,11 @@ Content-Type: application/json
 
 
 ### update a book information
-PUT http://localhost:3000/books/674e9027d8a0e1389c0390e5
+PUT http://localhost:3000/books/674e900dd8a0e1389c0390e4
 Content-Type: application/json
 
 {
-  "edition": "Paperback"
+  "authorId": "675001e25bebe4ee950a1b0d"
 }
 
 
