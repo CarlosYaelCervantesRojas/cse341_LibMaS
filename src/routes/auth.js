@@ -1,3 +1,7 @@
+const DB = require("../models/dbClient")
+const dbClient = new DB()
+const usersController = require("../controllers/users")
+
 const passport = require("passport")
 
 const router = require("express").Router()
@@ -8,9 +12,16 @@ passport.use(new GoogleStrategy({
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.CALLBACK_URL
     }, 
-    function(accessToken, refreshToken, profile, cb){
-      console.log(profile)
-      return cb(null, profile)
+    async function(accessToken, refreshToken, profile, cb){
+
+      let user =  await dbClient.get("users", { googleId: profile.id});
+
+      if (user.length > 0) {
+        return cb(null, profile)
+      } else {
+        await usersController.post(profile, accessToken)
+        return cb(null, profile);
+      }
     },
     function(error, profile) {
       return cb(error, profile)
