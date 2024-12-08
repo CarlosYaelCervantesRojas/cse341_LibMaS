@@ -73,9 +73,9 @@ usersController.put = async (req, res) => {
       in: 'body',
       description: 'Json containing user data',
       schema:   {
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName,
-        displayName: profile.displayName,
+        "firstName": "string",
+        "lastName": "string",
+        "displayName": "string",
       }
     }
     #swagger.responses[200] = { description: 'User updated successfully' }

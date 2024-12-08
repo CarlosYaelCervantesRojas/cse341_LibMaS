@@ -4,7 +4,7 @@ const swaggerDoc = require("../swagger/documentation.json")
 
 router.use("/", async (req, res, next) => {
   swaggerDoc.host = req.get('host')
-  swaggerDoc.schemes = req.protocol == "https" ? "https" : "http"
+  req.swaggerDoc = swaggerDoc
   next()
 }, swaggerUI.serveFiles(swaggerDoc, {}), swaggerUI.setup())
 
