@@ -13,7 +13,7 @@ app
     resave: false,
     saveUninitialized: false
   }))
-  .use(passport.initialize())
+  //.use(passport.initialize())
   .use(passport.session())
   .use(cors())
   .use("/", router)
