@@ -571,10 +571,13 @@
         "tags": [
           "Loans"
         ],
-        "description": "",
+        "description": "Returns all loans from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Loans retrieved successfully"
+          },
+          "500": {
+            "description": "Internal server error (database or Node.js)"
           }
         }
       },
@@ -582,31 +585,30 @@
         "tags": [
           "Loans"
         ],
-        "description": "",
+        "description": "Adds a new loan to the database",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "JSON containing loan data",
             "schema": {
               "type": "object",
               "properties": {
-                "bookId": {
-                  "example": "any"
+                "bookItemId": {
+                  "type": "string",
+                  "example": "123456"
                 },
                 "userId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "654321"
                 },
                 "checkOutDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2024-12-01"
                 },
                 "dueDate": {
-                  "example": "any"
-                },
-                "returnDate": {
-                  "example": "any"
-                },
-                "feeAssessed": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2024-12-22"
                 }
               }
             }
@@ -614,10 +616,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "New loan created successfully"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal server error (database or Node.js)"
           }
         }
       }
@@ -627,7 +629,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "",
+        "description": "Returns loans with the given ID",
         "parameters": [
           {
             "name": "loan_id",
@@ -638,10 +640,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Loans with the given id retrieval successfully"
           },
-          "404": {
-            "description": "Not Found"
+          "500": {
+            "description": "Internal server error (database or Node.js)"
           }
         }
       },
@@ -649,24 +651,36 @@
         "tags": [
           "Loans"
         ],
-        "description": "",
+        "description": "Update an existing loan to reflect ",
         "parameters": [
           {
             "name": "loan_id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON containing loan data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "returnDate": {
+                  "type": "string",
+                  "example": "2024-12-20"
+                },
+                "feeAssessed": {
+                  "type": "string",
+                  "example": "2.50"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -674,7 +688,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "",
+        "description": "Deletes an loan with the given ID",
         "parameters": [
           {
             "name": "loan_id",
@@ -684,14 +698,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
