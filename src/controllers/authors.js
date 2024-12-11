@@ -78,7 +78,7 @@ authorsController.post = async (req, res) => {
           dod: {type: "string", format: "date", example: ""},
           country: {type: "string", example: "US"},
           language: {type: "string", example: "English"},
-          wiki: {type: "string", format: "uri" example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
+          wiki: {type: "string", format: "uri", example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
         }
       }
     }
@@ -114,7 +114,7 @@ authorsController.put = async (req, res) => {
           dod: {type: "string", format: "date", example: ""},
           country: {type: "string", example: "US"},
           language: {type: "string", example: "English"},
-          wiki: {type: "string", format: "uri" example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
+          wiki: {type: "string", format: "uri", example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
         }
       }
     }
