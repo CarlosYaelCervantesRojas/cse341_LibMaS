@@ -72,7 +72,6 @@ authorsController.post = async (req, res) => {
         "firstName": "Brandon",
         "lastName": "Sanderson",
         "dob": "1975-12-19",
-        "dod": "",
         "country": "US",
         "language": "English",
         "wiki": "https://en.wikipedia.org/wiki/Brandon_Sanderson"

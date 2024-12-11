@@ -21,32 +21,32 @@ authorValidator.postRules = () => {
     body("dob")
       .trim()
       .escape()
+      .optional()
       .isDate({ format: "YYYY-MM-DD" })
-      .withMessage("date must be in YYYY-MM-DD format")
-      .optional(),
+      .withMessage("date must be in YYYY-MM-DD format"),
     body("dod")
       .trim()
       .escape()
+      .optional()
       .isDate({ format: "YYYY-MM-DD" })
-      .withMessage("date must be in YYYY-MM-DD format")
-      .optional(),
+      .withMessage("date must be in YYYY-MM-DD format"),
     body("country")
       .trim()
       .escape()
+      .optional()
       .isLength({ min: 2 })
-      .withMessage("minimum 2 letters")
-      .optional(),
+      .withMessage("minimum 2 letters"),
     body("language")
       .trim()
       .escape()
+      .optional()
       .isLength({ min: 2 })
-      .withMessage("minimum 2 letters")
-      .optional(),
+      .withMessage("minimum 2 letters"),
     body("wiki")
       .trim()
+      .optional()
       .isURL()
-      .withMessage("please add a valid url")
-      .optional(),
+      .withMessage("please add a valid url"),
   ];
 };
 
@@ -55,46 +55,44 @@ authorValidator.putRules = () => {
     body("firstName")
       .trim()
       .escape()
-      .notEmpty()
-      .withMessage("is required")
+      .optional()
       .isLength({ min: 2 })
       .withMessage("minimum 2 letters"),
     body("lastName")
       .trim()
       .escape()
-      .notEmpty()
-      .withMessage("is required")
+      .optional()
       .isLength({ min: 2 })
       .withMessage("minimum 2 letters"),
     body("dob")
+      .optional()
       .trim()
       .escape()
       .isDate({ format: "YYYY-MM-DD" })
-      .withMessage("date must be in YYYY-MM-DD format")
-      .optional(),
+      .withMessage("date must be in YYYY-MM-DD format"),
     body("dod")
       .trim()
       .escape()
+      .optional()
       .isDate({ format: "YYYY-MM-DD" })
-      .withMessage("date must be in YYYY-MM-DD format")
-      .optional(),
+      .withMessage("date must be in YYYY-MM-DD format"),
     body("country")
       .trim()
       .escape()
+      .optional()
       .isLength({ min: 2 })
-      .withMessage("minimum 2 letters")
-      .optional(),
+      .withMessage("minimum 2 letters"),
     body("language")
       .trim()
       .escape()
+      .optional()
       .isLength({ min: 2 })
-      .withMessage("minimum 2 letters")
-      .optional(),
+      .withMessage("minimum 2 letters"),
     body("wiki")
       .trim()
+      .optional()
       .isURL()
-      .withMessage("please add a valid url")
-      .optional(),
+      .withMessage("please add a valid url"),
   ];
 };
 
