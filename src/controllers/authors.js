@@ -69,17 +69,13 @@ authorsController.post = async (req, res) => {
       in: "body",
       description: "JSON containing author data",
       schema: {
-        type: "object",
-        required: ["firstName", "lastName"],
-        properties: {
-          firstName: {type: "string", example: "Brandon"},
-          lastName: {type: "string", example: "Sanderson"},
-          dob: {type: "string", format: "date", example: "1975-12-19"},
-          dod: {type: "string", format: "date", example: ""},
-          country: {type: "string", example: "US"},
-          language: {type: "string", example: "English"},
-          wiki: {type: "string", format: "uri", example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
-        }
+        "firstName": "Brandon",
+        "lastName": "Sanderson",
+        "dob": "1975-12-19",
+        "dod": "",
+        "country": "US",
+        "language": "English",
+        "wiki": "https://en.wikipedia.org/wiki/Brandon_Sanderson"
       }
     }
     #swagger.responses[201] = { description: "New author created successfully" }
@@ -106,18 +102,9 @@ authorsController.put = async (req, res) => {
     in: "body",
     description: "JSON containing author data",
     schema: {
-        type: "object",
-        properties: {
-          firstName: {type: "string", example: "Brandon"},
-          lastName: {type: "string", example: "Sanderson"},
-          dob: {type: "string", format: "date", example: "1975-12-19"},
-          dod: {type: "string", format: "date", example: ""},
-          country: {type: "string", example: "US"},
-          language: {type: "string", example: "English"},
-          wiki: {type: "string", format: "uri", example: "https://en.wikipedia.org/wiki/Brandon_Sanderson"}
-        }
-      }
+      "dod": "2025-01-01",
     }
+  }
   #swagger.response[200] = {description: "Author updated successfully"}
   #swagger.response[400] = {description: "Bad request (missing or invalid data)"}
   #swagger.response[500] = {description: "Internal server error (database or Node.js)"}
