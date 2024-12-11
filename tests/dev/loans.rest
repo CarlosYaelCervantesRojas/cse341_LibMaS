@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "bookId": "6750be446deba23db5ba3033",
-    "userId": "dmb1111"
+    "userId": "103884238992484541696"
 }
 
 ### update a loan information
@@ -18,7 +18,7 @@ PUT http://localhost:3000/loans/6750bec46deba23db5ba3034 HTTP/1.1
 Content-Type: application/json
 
 {
-    "returnDate": "2024-12-04T00:00:00Z",
+    "returnDate": "2024-12-04",
     "feeAssessed": 2.50
 }
 
