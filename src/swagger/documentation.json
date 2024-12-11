@@ -443,127 +443,33 @@
             "schema": {
               "type": "object",
               "properties": {
-                "type": {
+                "firstName": {
                   "type": "string",
-                  "example": "object"
+                  "example": "Brandon"
                 },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "firstName",
-                    "lastName"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                "lastName": {
+                  "type": "string",
+                  "example": "Sanderson"
                 },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "firstName": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "Brandon"
-                        }
-                      }
-                    },
-                    "lastName": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "Sanderson"
-                        }
-                      }
-                    },
-                    "dob": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "1975-12-19"
-                        }
-                      }
-                    },
-                    "dod": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": ""
-                        }
-                      }
-                    },
-                    "country": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "US"
-                        }
-                      }
-                    },
-                    "language": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "English"
-                        }
-                      }
-                    },
-                    "wiki": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "uri"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "https://en.wikipedia.org/wiki/Brandon_Sanderson"
-                        }
-                      }
-                    }
-                  }
+                "dob": {
+                  "type": "string",
+                  "example": "1975-12-19"
+                },
+                "dod": {
+                  "type": "string",
+                  "example": ""
+                },
+                "country": {
+                  "type": "string",
+                  "example": "US"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "English"
+                },
+                "wiki": {
+                  "type": "string",
+                  "example": "https://en.wikipedia.org/wiki/Brandon_Sanderson"
                 }
               }
             }
@@ -627,117 +533,9 @@
             "schema": {
               "type": "object",
               "properties": {
-                "type": {
+                "dod": {
                   "type": "string",
-                  "example": "object"
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "firstName": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "Brandon"
-                        }
-                      }
-                    },
-                    "lastName": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "Sanderson"
-                        }
-                      }
-                    },
-                    "dob": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "1975-12-19"
-                        }
-                      }
-                    },
-                    "dod": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": ""
-                        }
-                      }
-                    },
-                    "country": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "US"
-                        }
-                      }
-                    },
-                    "language": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "English"
-                        }
-                      }
-                    },
-                    "wiki": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "uri"
-                        },
-                        "example": {
-                          "type": "string",
-                          "example": "https://en.wikipedia.org/wiki/Brandon_Sanderson"
-                        }
-                      }
-                    }
-                  }
+                  "example": "2025-01-01"
                 }
               }
             }
