@@ -35,8 +35,8 @@ loanValidator.postRules = () => {
 
 loanValidator.putRules = () => {
   return [
-    body("bookId").trim().escape().optional().withMessage("is required"),
-    body("userId").trim().escape().optional().withMessage("is required"),
+    body("bookId").trim().escape().optional(),
+    body("userId").trim().escape().optional(),
     body("checkOutDate")
       .trim()
       .escape()
