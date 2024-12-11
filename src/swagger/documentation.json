@@ -455,10 +455,6 @@
                   "type": "string",
                   "example": "1975-12-19"
                 },
-                "dod": {
-                  "type": "string",
-                  "example": ""
-                },
                 "country": {
                   "type": "string",
                   "example": "US"
