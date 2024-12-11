@@ -44,7 +44,6 @@ authorValidator.postRules = () => {
       .optional(),
     body("wiki")
       .trim()
-      .escape()
       .isURL()
       .withMessage("please add a valid url")
       .optional(),
@@ -93,7 +92,6 @@ authorValidator.putRules = () => {
       .optional(),
     body("wiki")
       .trim()
-      .escape()
       .isURL()
       .withMessage("please add a valid url")
       .optional(),
