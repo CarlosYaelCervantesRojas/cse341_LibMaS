@@ -5,10 +5,9 @@
     "description": "Final group project for BYU-I CSE341",
     "version": "0.1a"
   },
-  "host": "localhost:3000",
+  "host": "https://libmas-0r1n.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
