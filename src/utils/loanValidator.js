@@ -9,13 +9,13 @@ loanValidator.postRules = () => {
     body("checkOutDate")
       .trim()
       .escape()
-      .notEmpty()
+      .optional({ nullable: true })
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("dueDate")
       .trim()
       .escape()
-      .notEmpty()
+      .optional({ nullable: true })
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("returnDate")
