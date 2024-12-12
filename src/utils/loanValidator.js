@@ -9,13 +9,13 @@ loanValidator.postRules = () => {
     body("checkOutDate")
       .trim()
       .escape()
-      .optional({ nullable: true })
+      .optional()
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("dueDate")
       .trim()
       .escape()
-      .optional({ nullable: true })
+      .optional()
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("returnDate")
@@ -52,13 +52,13 @@ loanValidator.putRules = () => {
     body("returnDate")
       .trim()
       .escape()
-      .optional()
+      .optional({ nullable: true })
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("feeAssessed")
       .trim()
       .escape()
-      .optional()
+      .optional({ nullable: true })
       .isNumeric()
       .withMessage("must be a number"),
   ];
