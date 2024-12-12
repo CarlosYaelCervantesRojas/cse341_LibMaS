@@ -25,7 +25,7 @@ loansController.getAll = async (req, res) => {
   }
 };
 
-// Retrieves loan - Uses "get" function from dbClient and populates the collection name, populating qry param with specific ID
+// Retrieves loan - Uses "get" function from dbClient and populates the collection name, populating qry param with s*pecific ID
 loansController.get = async (req, res) => {
   /* 
     #swagger.tags = ['Loans']
