@@ -139,7 +139,7 @@ loansController.put = async (req, res) => {
     #swagger.response[500] = {description: "Internal server error (database or Node.js)"}
   */
   const loanID = req.params.loan_id;
-  const updatedData = req.body;
+  const { returnDate, feeAssessed } = req.body;
 
   try {
     // fetch the existing loan
@@ -153,23 +153,14 @@ loansController.put = async (req, res) => {
     }
 
     // Create a default returnDate of today if not provided
-    const today = new Date().toISOString().split("T")[0];
-    const returnDate = updatedData.returnDate || today;
-
-    // Calculate a Late Fee if return date is later than the due date ($0.25 per day), unless explicately provided
-    let feeAssessed = loan.feeAssessed || 0;
-    if (loan.dueDate && new Date(returnDate) > new Date(loan.dueDate)) {
-      const daysLate = Math.ceil(
-        (new Date(returnDate) - new Date(loan.dueDate)) / (1000 * 60 * 60 * 24)
-      );
-      feeAssessed = parseFloat((daysLate * 0.25).toFixed(2));
-    }
+    const calcReturnDate = returnDate || new Date().toISOString().split("T")[0];
+    const calcFeeAssessed =
+      feeAssessed || calcFee(loan.dueDate, calcReturnDate);
 
     // put the updated values in an object variable
     const updateFields = {
-      ...updatedData,
-      returnDate,
-      feeAssessed,
+      returnDate: calcReturnDate,
+      feeAssessed: calcFeeAssessed,
     };
 
     // update the database
@@ -226,5 +217,13 @@ loansController.delete = async (req, res) => {
       .json({ message: "An error occurred while deleting the loan" });
   }
 };
+
+function calcFee(dueDate, returnDate) {
+  const daysLate = Math.ceil(
+    (new Date(returnDate) - new Date(dueDate)) / (1000 * 60 * 60 * 24)
+  );
+  const fee = daysLate * 0.25;
+  return fee;
+}
 
 module.exports = loansController;
