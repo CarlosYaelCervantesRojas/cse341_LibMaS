@@ -81,12 +81,12 @@ loansController.post = async (req, res) => {
   */
 
   try {
-    const { bookId, userId, checkOutDate, dueDate } = req.body;
+    const { bookItemId, userId, checkOutDate, dueDate } = req.body;
 
-    if (!bookId || !userId) {
+    if (!bookItemId || !userId) {
       return res
         .status(statusCodes.BadRequest)
-        .json({ message: "Missing required fields: bookId or userId" });
+        .json({ message: "Missing required fields: bookItemId or userId" });
     }
 
     // calculates the default dueDate if one isn't provided (based on 21 days from checkOutDate)
@@ -105,7 +105,7 @@ loansController.post = async (req, res) => {
     const effectiveDueDate = dueDate || calcDueDate(effectiveCheckOutDate);
 
     const loan = {
-      bookId,
+      bookItemId,
       userId,
       checkOutDate: effectiveCheckOutDate,
       dueDate: effectiveDueDate,

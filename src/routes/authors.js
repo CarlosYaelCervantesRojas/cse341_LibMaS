@@ -17,7 +17,7 @@ router
   .put(
     "/:author_id",
     auth.isAuthenticated,
-    authorValidator.putRules(),
+    authorValidator.postRules(),
     checkResult,
     authorsController.put
   )

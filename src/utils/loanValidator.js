@@ -4,7 +4,7 @@ const loanValidator = {};
 
 loanValidator.postRules = () => {
   return [
-    body("bookId").trim().escape().notEmpty().withMessage("is required"),
+    body("bookItemId").trim().escape().notEmpty().withMessage("is required"),
     body("userId").trim().escape().notEmpty().withMessage("is required"),
     body("checkOutDate")
       .trim()
@@ -35,7 +35,7 @@ loanValidator.postRules = () => {
 
 loanValidator.putRules = () => {
   return [
-    body("bookId").trim().escape().optional(),
+    body("bookItemId").trim().escape().optional(),
     body("userId").trim().escape().optional(),
     body("checkOutDate")
       .trim()

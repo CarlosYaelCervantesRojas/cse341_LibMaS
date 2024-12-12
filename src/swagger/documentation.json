@@ -576,6 +576,9 @@
           "200": {
             "description": "Loans retrieved successfully"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (database or Node.js)"
           }
@@ -618,6 +621,12 @@
           "201": {
             "description": "New loan created successfully"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (database or Node.js)"
           }
@@ -642,6 +651,9 @@
           "200": {
             "description": "Loans with the given id retrieval successfully"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (database or Node.js)"
           }
@@ -651,7 +663,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "Update an existing loan to reflect ",
+        "description": "Adds a new loan to the database",
         "parameters": [
           {
             "name": "loan_id",
@@ -666,21 +678,38 @@
             "schema": {
               "type": "object",
               "properties": {
-                "returnDate": {
+                "bookItemId": {
                   "type": "string",
-                  "example": "2024-12-20"
+                  "example": "123456"
                 },
-                "feeAssessed": {
+                "userId": {
                   "type": "string",
-                  "example": "2.50"
+                  "example": "654321"
+                },
+                "checkOutDate": {
+                  "type": "string",
+                  "example": "2024-12-01"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "example": "2024-12-22"
                 }
               }
             }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "New loan created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error (database or Node.js)"
           }
         }
       },
@@ -698,6 +727,9 @@
           }
         ],
         "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
