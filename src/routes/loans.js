@@ -18,6 +18,7 @@ router
     "/:loan_id",
     auth.isAuthenticated,
     loanValidator.putRules(),
+    checkResult,
     loansController.put
   )
   .delete("/:loan_id", auth.isAuthenticated, loansController.delete);
