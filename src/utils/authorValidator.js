@@ -65,32 +65,32 @@ authorValidator.putRules = () => {
       .isLength({ min: 2 })
       .withMessage("minimum 2 letters"),
     body("dob")
-      .optional()
       .trim()
       .escape()
+      .optional({ nullable: true })
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("dod")
       .trim()
       .escape()
-      .optional()
+      .optional({ nullable: true })
       .isDate({ format: "YYYY-MM-DD" })
       .withMessage("date must be in YYYY-MM-DD format"),
     body("country")
       .trim()
       .escape()
-      .optional()
+      .optional({ nullable: true })
       .isLength({ min: 2 })
       .withMessage("minimum 2 letters"),
     body("language")
       .trim()
       .escape()
-      .optional()
+      .optional({ nullable: true })
       .isLength({ min: 2 })
       .withMessage("minimum 2 letters"),
     body("wiki")
       .trim()
-      .optional()
+      .optional({ nullable: true })
       .isURL()
       .withMessage("please add a valid url"),
   ];
