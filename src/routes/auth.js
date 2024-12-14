@@ -17,6 +17,7 @@ passport.use(new GoogleStrategy({
       let user =  await dbClient.get("users", { googleId: profile.id});
 
       if (user.length > 0) {
+        profile.role = user[0].role
         return cb(null, profile)
       } else {
         await usersController.post(profile, accessToken)
@@ -50,7 +51,9 @@ router.get(
   }),
   (req, res) => {
     // #swagger.ignore = true
-    res.redirect("/")
+    const redirectUrl = req.session.returnTo || "/"
+    delete req.session.returnTo
+    res.redirect(redirectUrl)
   }
 )
 

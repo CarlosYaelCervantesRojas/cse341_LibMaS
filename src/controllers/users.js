@@ -47,14 +47,13 @@ usersController.get = async (req, res) => {
   }
 }
 
-usersController.post = async (profile, accessToken) => {
-  console.log(profile)
+usersController.post = async (profile) => {
   const newUser = {
     googleId: profile.id,
     firstName: profile.name.givenName,
     lastName: profile.name.familyName,
     displayName: profile.displayName,
-    tookenId: accessToken
+    role: "user"
   }
   try {
     const result = await db.post(USERS, newUser)

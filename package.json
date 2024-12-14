@@ -27,12 +27,14 @@
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "express-validator": "^7.2.0",
+    "memorystore": "^1.6.7",
     "mongodb": "^6.11.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "swagger-autogen": "^2.23.7"
   }
 }

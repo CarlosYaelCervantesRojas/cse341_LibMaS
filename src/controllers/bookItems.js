@@ -87,7 +87,8 @@ bookItemsController.post = async (req, res) => {
   */
   try {
     const result = await db.post(BOOK_ITEMS, req.body)
-    res.status(200).json(result)
+    const newItem = {_id: new ObjectId(result.insertedId), ...req.body}
+    res.status(200).json(newItem)
   } catch (e) {
     console.error(e)
     res.status(500).send(e)
@@ -110,6 +111,7 @@ bookItemsController.put = async (req, res) => {
   */
   try {
     const result = await db.put(BOOK_ITEMS, { _id: new ObjectId(req.params.bookItemId)}, {$set: req.body})
+    if (result.modifiedCount === 0) return res.status(304).json({error: "not modified"})
     res.status(204).json(result)
   } catch(e) {
     console.error(e)
