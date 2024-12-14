@@ -45,7 +45,7 @@ authorsController.get = async (req, res) => {
       _id: new ObjectId(authorId),
     });
 
-    if (!author) {
+    if (author.length < 1) {
       return res
         .status(statusCodes.NotFound)
         .json({ message: "Author not found" });
