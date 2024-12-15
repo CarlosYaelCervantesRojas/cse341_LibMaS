@@ -48,12 +48,10 @@ bookItemValidator.putRules = () => {
       .notEmpty().withMessage("is required"),
     body("available")
       .optional()
-      .trim()
       .notEmpty().withMessage("is required")
       .isBoolean().withMessage("must be boolean"),
     body("discarded")
       .optional()
-      .trim()
       .notEmpty().withMessage("is required")
       .isBoolean().withMessage("must be boolean"),
     body("discardedDate")

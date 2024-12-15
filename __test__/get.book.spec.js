@@ -12,19 +12,19 @@ describe('Test Handlers', () => {
     })
 
     test('responds to /books/:book_id', async () => {
-        const res = await request.get('/books/675765afb721278eaa85c99c');
+        const res = await request.get('/books/674e9051d8a0e1389c0390e7');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })
 
     test('responds to /books/:book_id/items', async () => {
-        const res = await request.get('/books/675765afb721278eaa85c99c/items');
+        const res = await request.get('/books/674e9051d8a0e1389c0390e7/items');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })
 
     test('responds to /books/:book_id/details', async () => {
-        const res = await request.get('/books/675765afb721278eaa85c99c/details');
+        const res = await request.get('/books/674e9051d8a0e1389c0390e7/details');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "LibMaS API documentation",
-    "description": "Final group project for BYU-I CSE341. Authors: [Deana Briggs](https://github.com/deanabriggs), [Carlos Cervantes](https://github.com/CarlosYaelCervantesRojas), [Wilson Romero](https://github.com/wilsonBYU)",
+    "description": "Final group project for BYU-I CSE341. Authors and contributions: [Deana Briggs](https://github.com/deanabriggs) (loans, authors, testing), [Carlos Cervantes](https://github.com/CarlosYaelCervantesRojas)(users, authentication, testing), [Wilson Romero](https://github.com/wilsonBYU) (books, bookItems, authorization, database)",
     "version": "0.1a"
   },
   "host": "localhost:3000",
@@ -11,17 +11,6 @@
     "https",
     "http"
   ],
-  "securityDefinitions": {
-    "google_oauth": {
-      "type": "oauth2",
-      "flow": "implicit",
-      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
-      "clientId": "558767082603-8u98eg9s1hemt5m6r4en9v2momaea4db.apps.googleusercontent.com",
-      "scopes": {
-        "profile": "Read your google profile data"
-      }
-    }
-  },
   "paths": {
     "/books/": {
       "get": {
@@ -89,6 +78,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal server error (databse or node)"
@@ -160,6 +152,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (databse or node)"
           }
@@ -184,6 +179,9 @@
           },
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal server error (databse or node)"
@@ -299,6 +297,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (databse or node)"
           }
@@ -371,6 +372,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (databse or node)"
           }
@@ -392,6 +396,9 @@
         "responses": {
           "204": {
             "description": "Book item with the given id deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal server error (databse or node)"
@@ -587,9 +594,6 @@
           "200": {
             "description": "Loans retrieved successfully"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal server error (database or Node.js)"
           }
@@ -661,9 +665,6 @@
         "responses": {
           "200": {
             "description": "Loans with the given id retrieval successfully"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal server error (database or Node.js)"
@@ -820,6 +821,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal server error (databse or node)"
           }
@@ -844,6 +848,9 @@
           },
           "400": {
             "description": "Invalid user Id format"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "User with the given id does not excist"

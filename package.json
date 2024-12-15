@@ -4,7 +4,7 @@
   "description": "BYU-I CSE341 - Group project",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --env-file=.env --coverage",
     "start": "node --env-file=.env --watch app.js",
     "swagger": "node ./src/swagger/swagger.js"
   },

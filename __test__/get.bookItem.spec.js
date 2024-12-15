@@ -12,13 +12,13 @@ describe('Test Handlers', () => {
     })
 
     test('responds to /bookItems/:bookItemId', async () => {
-        const res = await request.get('/bookItems/675e1f4aff8a08822afcdb6b');
+        const res = await request.get('/bookItems/674fff809877b9bd715ea1fc');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })
 
     test('responds to /bookItems/:bookItemId/details', async () => {
-        const res = await request.get('/bookItems/675e1f4aff8a08822afcdb6b/details');
+        const res = await request.get('/bookItems/674fff809877b9bd715ea1fc/details');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })

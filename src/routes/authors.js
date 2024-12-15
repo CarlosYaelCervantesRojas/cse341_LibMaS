@@ -9,18 +9,24 @@ router
   .get("/:author_id", authorsController.get)
   .post(
     "/",
-    auth.isAuthenticated,
+    auth.isAuthenticated, 
+    auth.isLibrarian,
     authorValidator.postRules(),
     checkResult,
     authorsController.post
   )
   .put(
     "/:author_id",
-    auth.isAuthenticated,
+    auth.isAuthenticated, 
+    auth.isLibrarian,
     authorValidator.putRules(),
     checkResult,
     authorsController.put
   )
-  .delete("/:author_id", auth.isAuthenticated, authorsController.delete);
+  .delete("/:author_id",     
+    auth.isAuthenticated, 
+    auth.isLibrarian, 
+    authorsController.delete
+  );
 
 module.exports = router;

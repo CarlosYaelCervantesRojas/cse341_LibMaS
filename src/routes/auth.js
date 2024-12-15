@@ -1,5 +1,6 @@
 const DB = require("../models/dbClient")
 const dbClient = new DB()
+const { ObjectId } = require("mongodb")
 const usersController = require("../controllers/users")
 
 const passport = require("passport")
@@ -18,10 +19,11 @@ passport.use(new GoogleStrategy({
 
       if (user.length > 0) {
         profile.role = user[0].role
-        return cb(null, profile)
+        return cb(null, user[0])
       } else {
-        await usersController.post(profile, accessToken)
-        return cb(null, profile);
+        const result = await usersController.post(profile, accessToken)
+        const newUser = await dbClient.get("users", { _id: new ObjectId(result.insertedId)})
+        return cb(null, newUser);
       }
     },
     function(error, profile) {
@@ -56,5 +58,13 @@ router.get(
     res.redirect(redirectUrl)
   }
 )
+
+router.get('/logout', async (req, res) => {
+  /* #swagger.ignore = true*/
+  req.logout(function(error) {
+    if (error) return next(error)
+    res.redirect("/")
+  })
+})
 
 module.exports = router
