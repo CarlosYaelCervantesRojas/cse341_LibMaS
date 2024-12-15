@@ -3,7 +3,7 @@ const authorization = {}
 authorization.isAuthenticated = async (req, res, next) => {
   if (req.isAuthenticated()) return next()
   req.session.redirectTo = req.originalUrl
-  return res.redirect("/auth/google")
+  // return res.redirect("/auth/google")
   res.status(401).json({error: "not authenticated"})
 }
 
