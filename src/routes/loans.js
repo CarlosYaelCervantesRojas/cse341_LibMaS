@@ -5,8 +5,8 @@ const loanValidator = require("../utils/loanValidator");
 const checkResult = require("../utils/validate");
 
 router
-  .get("/", auth.isAuthenticated, loansController.getAll)
-  .get("/:loan_id", auth.isAuthenticated, loansController.get)
+  .get("/", loansController.getAll)
+  .get("/:loan_id", loansController.get)
   .post(
     "/",
     auth.isAuthenticated,
