@@ -15,7 +15,7 @@ views.login = () => {
       <article class="w-screen h-screen bg-neutral-200 flex flex items-center justify-center">
         <section class="p-9 bg-neutral-50 rounded sm:max-w-[90%] md:max-w-[75%] lg:max-w-[60%] shadow-md">
           <h1 class="text-blue-950 text-4xl font-black font-serif">LibMaS</h1>
-          <p>Welcome to LibMaS (<strong>Lib</strong>rary <strong>Ma</strong>nagement <strong>S</strong>ystem), the library management system API of the future. To know more about your access rights please choose your authentication method or click the api documentation button to go to the API Documentation page.</p>
+          <p>The <strong>Lib</strong>rary <strong>Ma</strong>nagement <strong>S</strong>ystem API of the future. To know more about your access rights please choose your authentication method or click the api documentation button to go to the API Documentation page.</p>
           <hr class="m-6">
           <section class="flex items-center justify-center w-100 gap-5">
             <a href="/auth/google" class="gap-2 p-2 border border-neutral-400 rounded shadow-sm hover:shadow-md">
@@ -60,7 +60,7 @@ views.home = (profile) => {
       <article class="w-screen h-screen bg-neutral-200 flex flex items-center justify-center">
         <section class="p-9 bg-neutral-50 rounded sm:max-w-[90%] md:max-w-[75%] lg:max-w-[60%] shadow-md">
           <h1 class="text-blue-950 text-4xl font-black font-serif">LibMaS</h1>
-          <p>Welcome to LibMaS (<strong>Lib</strong>rary <strong>Ma</strong>nagement <strong>S</strong>ystem), the library management system API of the future.</p>
+          <p>The <strong>Lib</strong>rary <strong>Ma</strong>nagement <strong>S</strong>ystem API of the future.</p>
           <hr class="m-6">
           <section class="w-100">
             <section class="flex justify-between items-center pb-7">
