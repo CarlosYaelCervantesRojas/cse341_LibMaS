@@ -8,7 +8,7 @@ router
   .get("/", bookItemsController.getAll)
   .get("/:bookItemId", bookItemsController.get)
   .get("/:bookItemId/details", bookItemsController.getDetail)
-  .post("/", bookItemValidator.postRules(), checkResult, bookItemsController.post)
-  .put("/:bookItemId", bookItemValidator.putRules(), checkResult, bookItemsController.put)
-  .delete("/:bookItemId", bookItemsController.delete)
-module.exports = router
+  .post("/",auth.isAuthenticated, auth.isLibrarian, bookItemValidator.postRules(), checkResult, bookItemsController.post)
+  .put("/:bookItemId", auth.isAuthenticated, auth.isLibrarian, bookItemValidator.putRules(), checkResult, bookItemsController.put)
+  .delete("/:bookItemId",auth.isAuthenticated, auth.isLibrarian, bookItemsController.delete)
+module.exports = router 

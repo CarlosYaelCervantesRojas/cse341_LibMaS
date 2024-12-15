@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session)
 const passport = require("passport");
+const path = require("path")
 
 app
 .use(express.json())
@@ -20,7 +21,7 @@ app
       saveUninitialized: false,
     })
   )
-  //.use(passport.initialize())
+  .use(passport.initialize())
   .use(passport.session())
   .use(cors())
   .use("/", router)

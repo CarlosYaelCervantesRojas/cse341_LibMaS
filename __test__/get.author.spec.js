@@ -12,7 +12,7 @@ describe('Test Handlers', () => {
     })
 
     test('responds to /authors/:author_id', async () => {
-        const res = await request.get('/authors/675cc9f1f909217dd86243f6');
+        const res = await request.get('/authors/675000ec5bebe4ee950a1b0c');
         expect(res.header['content-type']).toBe('application/json; charset=utf-8');
         expect(res.statusCode).toBe(200)
     })

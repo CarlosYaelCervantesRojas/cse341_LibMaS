@@ -57,7 +57,7 @@ usersController.post = async (profile) => {
   }
   try {
     const result = await db.post(USERS, newUser)
-    return result.acknowledged
+    return result
   } catch(e) {
     console.error(e)
     res.status(statusCodes.InternalServerError).json({error: "internal server error"})

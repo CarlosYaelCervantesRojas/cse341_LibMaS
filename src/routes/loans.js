@@ -9,18 +9,24 @@ router
   .get("/:loan_id", loansController.get)
   .post(
     "/",
-    auth.isAuthenticated,
+    auth.isAuthenticated, 
+    auth.isLibrarian, 
     loanValidator.postRules(),
     checkResult,
     loansController.post
   )
   .put(
     "/:loan_id",
-    auth.isAuthenticated,
+    auth.isAuthenticated, 
+    auth.isLibrarian, 
     loanValidator.putRules(),
     checkResult,
     loansController.put
   )
-  .delete("/:loan_id", auth.isAuthenticated, loansController.delete);
+  .delete("/:loan_id", 
+    auth.isAuthenticated, 
+    auth.isLibrarian, 
+    loansController.delete
+  );
 
 module.exports = router;
