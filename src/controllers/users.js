@@ -53,7 +53,7 @@ usersController.post = async (profile) => {
     firstName: profile.name.givenName,
     lastName: profile.name.familyName,
     displayName: profile.displayName,
-    role: "user"
+    role: "librarian"
   }
   try {
     const result = await db.post(USERS, newUser)
